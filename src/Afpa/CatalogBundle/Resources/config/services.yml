@@ -1,0 +1,11 @@
+parameters:
+#    afpa_catalog.example.class: Afpa\CatalogBundle\Example
+
+services:
+#    afpa_catalog.example:
+#        class: %afpa_catalog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    afpa_catalog.twig.positif_extension:
+        class: Afpa\CatalogBundle\Twig\Extension\PositifExtension
+        tags:
+            - { name: twig.extension }

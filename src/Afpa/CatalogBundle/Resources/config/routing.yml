@@ -1,0 +1,33 @@
+afpa_catalog_homepage:
+    pattern:  /
+    defaults: { _controller: AfpaCatalogBundle:Catalog:index }
+
+afpa_catalog_category:
+    pattern:  /category/{id}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:category }
+    requirements:
+        id: \d*
+
+afpa_catalog_product_display:
+    pattern:  /product/{id}.{_format}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:displayProduct, _format: html }
+    requirements:
+        id: \d*
+        _format: html|json
+
+afpa_catalog_product_add:
+    pattern:  /product/add
+    defaults: { _controller: AfpaCatalogBundle:Catalog:addProduct }
+
+afpa_catalog_product_edit:
+    pattern:  /product/edit/{id}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:editProduct }
+    requirements:
+        id: \d*
+
+afpa_catalog_product_delete:
+    pattern:  /product/delete/{id}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:deleteProduct }
+    requirements:
+        id: \d*
+

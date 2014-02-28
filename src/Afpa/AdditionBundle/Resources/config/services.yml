@@ -1,0 +1,7 @@
+parameters:
+#    afpa_addition.example.class: Afpa\AdditionBundle\Example
+
+services:
+#    afpa_addition.example:
+#        class: %afpa_addition.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,9 @@
+
+afpa_catalog:
+    resource: "@AfpaCatalogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+afpa_addition:
+    resource: "@AfpaAdditionBundle/Resources/config/routing.yml"
+    prefix:   /calculette
+
