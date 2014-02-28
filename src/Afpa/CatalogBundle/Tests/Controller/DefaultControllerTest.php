@@ -10,7 +10,7 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/category/1');
+        $crawler = $client->request('GET', '/product/1');
 
         $this->assertTrue($crawler->filter('html:contains("produit n° 1")')->count() > 0);
     }
