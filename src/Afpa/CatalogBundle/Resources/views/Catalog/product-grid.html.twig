@@ -1,0 +1,12 @@
+<div class="col-md-4 product">
+	<div class="left product-photo">
+		<img class="img-thumbnail small" src="{{ asset(product.photo) }}" />
+	</div>
+	<div class="left product-details">
+		<span class="label label-info">{{ product.brand.title }}</span>
+		<p>{{ product.title }}</p>
+		<p><b>{{ product.price }} €</b></p>
+		<a href="{{ path('afpa_catalog_product_display', {'id': product.id }) }}" class="btn btn-default" role="button">J'achète ! &raquo;</a>
+	</div>
+	<div class="clear"></div>
+</div>

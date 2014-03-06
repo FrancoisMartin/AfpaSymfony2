@@ -1,10 +1,30 @@
 {% extends "AfpaCatalogBundle::layout.html.twig" %}
 
-
-{% block body %}
-	{{ parent() }} Affichage du produit n° {{ id }}
-{% endblock %}
-
-{% block bodydetail %}
-	{{ site_name }}
+{% block inside_body %}
+  	<div class="page-header">
+      <h1>{{ product.title }}</h1>
+    </div>
+    <div>
+      <div class="left product-image"><img class="img-thumbnail" src="{{ asset(product.photo) }}" /></div>
+      <div class="left">
+        <div><img src="{{ asset(product.brand.logo) }}" /></div>
+        <br />
+        <span class="green">
+          {% for element in product.categories %}
+            {{ element.title }} {{ loop.last ? '' : '/ ' }}
+          {% endfor %}
+        </span>
+        <br />
+        <h5>Prix : <b>{{ product.price|number_format(2) }} €</b></h5>
+        <br />
+        {% if(product.stock) %}
+        	<span class="glyphicon glyphicon-ok"></span> En Stock
+        {% else %}
+        	<span class="glyphicon glyphicon-remove"></span> En Rupture
+        {% endif %}
+        <br /><br />
+        <p>{{ product.body }}</p>
+      </div>
+      <div class="clear"></div>
+    </div>
 {% endblock %}

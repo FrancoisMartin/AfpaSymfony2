@@ -1,0 +1,15 @@
+.jumbotron h1 { color: #46ad61; }
+.green { color: #46ad61; }
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+.product-image { margin-right: 20px; }
+
+.col-md-4.product  { position: relative; }
+.col-md-4.product img { max-width: 120px; }
+.col-md-4 .product-photo { width: 38%; }
+.col-md-4 .product-details { width: 62%; }
+.col-md-4 .product-details span { margin-bottom: 4px; }
+.category h1 { margin: 0; }
+.category img { padding-top: 10px; margin-right: 20px; }
+.row { margin-bottom: 30px; }

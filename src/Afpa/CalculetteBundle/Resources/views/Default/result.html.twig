@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+  <div class="container">
+  	<div class="starter-template">
+        <h1>Le resultat de votre calcul est :</h1>
+        <p class="lead">{{ result }}</p>
+    </div>
+  </div><!-- /.container -->
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/starter-template.css') }}" type="text/css" />
+{% endblock %}

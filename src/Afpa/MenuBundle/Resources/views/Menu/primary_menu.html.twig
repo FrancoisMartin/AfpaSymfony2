@@ -1,4 +1,48 @@
-<p>Le menu a bien été appelé. L'inclusion de contrôleur fonctionne donc bien.</p>
-<p>A vous de surcharger ce template TWIG dans : app/Resources/AfpaMenuBundle/views/Menu/primary_menu.html.twig</p>
-<p>La Variable menu est disponible, elle a été généré par le Controleur <b>AfpaMenuBunde:Menu:displayPrimaryMenu</b> :</p>
-{{ dump(menu) }}
+<!-- Static navbar -->
+<div class="navbar navbar-default" role="navigation">
+<div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="{{ path('afpa_catalog_homepage' )}}">{{ site_name }}</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      {% for item_menu in menu %}
+   	    <li>
+		  {% if item_menu.child is iterable %}
+		    <li class="dropdown">
+			  <a href="{{ item_menu.url }}" class="dropdown-toggle" data-toggle="dropdown">{{ item_menu.title }} <b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				{% for child_item_menu in item_menu.child %}
+				  <li><a href="{{ child_item_menu.url }}">{{ child_item_menu.title }}</a></li>
+				{% endfor %}
+			  </ul>
+		    </li>
+		  {% else %}
+		    <li><a href="{{ item_menu.url }}">{{ item_menu.title }}</a></li>
+		  {% endif %}
+		</li>
+	  {% endfor %}
+	 </ul>
+	 <ul class="nav navbar-nav navbar-right">
+
+         {% if app.user %}
+           <li><a href="{{ path('afpa_catalog_product_add') }}">Ajouter un produit</a></li>
+           <li class="dropdown">
+            <a href="{{ path('fos_user_profile_show') }}" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                </ul>
+           </li>
+         {% else %}
+             <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+         {% endif %}
+     </ul>
+  </div><!--/.nav-collapse -->
+</div><!--/.container-fluid -->
+</div>

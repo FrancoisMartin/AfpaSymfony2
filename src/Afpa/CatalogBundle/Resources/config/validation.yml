@@ -1,0 +1,11 @@
+Afpa\CatalogBundle\Entity\Product:
+    properties:
+        title:
+            - Length:
+                min: 5
+                minMessage: Donne moi un peu plus de détails
+            - NotBlank: ~
+        body:
+            - NotBlank: ~
+        price:
+            - GreaterThan: 0

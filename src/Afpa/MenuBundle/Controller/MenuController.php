@@ -8,24 +8,31 @@ class MenuController extends Controller
 {
     public function displayPrimaryMenuAction()
     {
-    	$primary_menu= array(
+    	$em = $this->getDoctrine()->getManager();
+        $brand_repo = $em->getRepository('AfpaCatalogBundle:Brand');
+        $brands = $brand_repo->findAll();
+
+        $category_repo = $em->getRepository('AfpaCatalogBundle:Category');
+        $categories = $category_repo->findAll();
+
+        foreach($brands as $brand){
+        	$brand_menu[] = array('title' => $brand->getTitle(), 'url' => $this->generateUrl('afpa_catalog_brand', array('id' => $brand->getId())));
+    	}       
+
+    	foreach($categories as $category){
+        	$category_menu[] = array('title' => $category->getTitle(), 'url' => $this->generateUrl('afpa_catalog_category', array('id' => $category->getId())));
+    	}
+
+    	$primary_menu = array(
     					array(
 	    					'title' => 'Sport',
 	    					'url' => $this->generateUrl('afpa_catalog_category', array('id' => 1)),
-	    					'child' => array(
-								array('title' => 'Running', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 2))),
-								array('title' => 'Rugby', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 3))),
-								array('title' => 'Foot', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 4))),
-							),
+	    					'child' => $category_menu
     					),
     					 array(
 	    					'title' => 'Marques',
 	    					'url' => $this->generateUrl('afpa_catalog_category', array('id' => 5)),
-	    					'child' => array(
-								array('title' => 'Adidas', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 6))),
-								array('title' => 'Quechua', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 7))),
-								array('title' => 'Puma', 'url' => $this->generateUrl('afpa_catalog_category', array('id' => 8))),
-							),
+	    					'child' => $brand_menu
     					),
     				);
         return $this->render('AfpaMenuBundle:Menu:primary_menu.html.twig', array('menu' => $primary_menu));

@@ -1,16 +1,19 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>{% block title %}{{ site_name }}{% endblock %}</title>
-  </head>
-  <body>
-    {% block body %}
-     BODY 
-     	{% block bodydetail %}
-     		PAR 
-     	{% endblock %}
-     DEFAUT
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/starter-template.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/afpacatalog/css/styles.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - Boutique
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    {{ render(controller('AfpaMenuBundle:Menu:displayPrimaryMenu')) }}
+    {% block inside_body %}
     {% endblock %}
-  </body>
-</html>
+  </div>
+{% endblock %}

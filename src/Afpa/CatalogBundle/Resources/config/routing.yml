@@ -2,9 +2,19 @@ afpa_catalog_homepage:
     pattern:  /
     defaults: { _controller: AfpaCatalogBundle:Catalog:index }
 
+afpa_catalog_all:
+    pattern:  /all
+    defaults: { _controller: AfpaCatalogBundle:Catalog:displayAll }
+
 afpa_catalog_category:
     pattern:  /category/{id}
     defaults: { _controller: AfpaCatalogBundle:Catalog:category }
+    requirements:
+        id: \d*
+
+afpa_catalog_brand:
+    pattern:  /brand/{id}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:brand }
     requirements:
         id: \d*
 
@@ -30,4 +40,17 @@ afpa_catalog_product_delete:
     defaults: { _controller: AfpaCatalogBundle:Catalog:deleteProduct }
     requirements:
         id: \d*
+
+afpa_catalog_brand_delete:
+    pattern:  /brand/delete/{id}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:deleteBrand }
+    requirements:
+        id: \d*
+
+afpa_catalog_convert:
+    pattern:  /convert/{devise}/{montant}
+    defaults: { _controller: AfpaCatalogBundle:Catalog:displayConvert }
+    requirements:
+        montant: \d*
+        devise: euro|dollar
 

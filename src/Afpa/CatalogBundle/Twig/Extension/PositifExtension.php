@@ -15,7 +15,7 @@ class PositifExtension extends \Twig_Extension
     {
         switch ($type) {
         	case 'fort':
-        		$string = str_replace('.', ", c'est INCROYABE !.", $value);
+        		$string = str_replace('.', ", c'est INCROYABE !", $value);
         		break;
         	
         	default:

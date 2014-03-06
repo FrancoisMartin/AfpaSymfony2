@@ -1,0 +1,14 @@
+{% extends "AfpaCatalogBundle::layout.html.twig" %}
+
+{% block body %}
+  <div class="container">
+    {{ render(controller('AfpaMenuBundle:Menu:displayPrimaryMenu')) }}
+  	<div class="jumbotron">
+        <h4>Ajouter un produit</h4><br />
+        <div>
+        	{{ form_start(formulaire, {attr: {novalidate: 'novalidate'}}) }}
+        	{{ form_end(formulaire) }}
+        </div>
+    </div>
+  </div><!-- /.container -->
+{% endblock %}

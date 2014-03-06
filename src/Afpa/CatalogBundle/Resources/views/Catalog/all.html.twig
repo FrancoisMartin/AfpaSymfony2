@@ -1,0 +1,16 @@
+{% extends "AfpaCatalogBundle::layout.html.twig" %}
+
+{% block inside_body %}
+  {{ parent() }}
+    <div class="jumbotron">
+      <h1>Tous les produits de {{ site_name }}</h1>
+      </p>
+    </div>
+    {% for line_product in products|batch(3) %}
+	    <div class="row">
+	    	{% for product in line_product %}
+	    		{% include('AfpaCatalogBundle:Catalog:product-grid.html.twig') %}
+		 	 	{% endfor %}
+			</div>
+		{% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "AfpaCatalogBundle::layout.html.twig" %}
+
+{% block inside_body %}
+  {{ parent() }}
+    <div class="jumbotron">
+	  <div class="category">
+	      {% if category.logo is defined %}
+	      	<div class="left">
+	      		<img src="{{ asset(category.logo) }}" />
+	      	</div>
+	      {% endif %}
+	      <div class="left">
+	      	<h1>{{ category.title }}</h1>
+	      </div>
+	      <div class="clear"></div>
+	  </div>
+	</div>
+    {% for line_product in products|batch(3) %}
+	    <div class="row">
+	    	{% for product in line_product %}
+	    		{% include('AfpaCatalogBundle:Catalog:product-grid.html.twig') %}
+		 	 	{% endfor %}
+			</div>
+		{% endfor %}
+{% endblock %}

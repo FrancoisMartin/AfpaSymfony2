@@ -9,3 +9,7 @@ services:
         class: Afpa\CatalogBundle\Twig\Extension\PositifExtension
         tags:
             - { name: twig.extension }
+
+    afpa_catalog.convert:
+        class: Afpa\CatalogBundle\TauxChange\TauxChange
+        arguments: [@mailer ,%taux_change%]
