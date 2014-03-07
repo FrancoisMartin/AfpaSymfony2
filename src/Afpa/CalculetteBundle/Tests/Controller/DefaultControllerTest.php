@@ -10,9 +10,10 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/5/10');
-
-        $this->assertTrue($crawler->filter('html:contains("10")')->count() > 0);
+        $crawler = $client->request('GET', '/calculette/result/15');
+        // print_r($client->getResponse()->getContent());
+        $this->assertTrue($crawler->filter('html:contains("15")')->count() > 0);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
 
