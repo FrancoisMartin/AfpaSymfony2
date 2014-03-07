@@ -10,5 +10,5 @@ before_script:
   - php app/console doctrine:database:create
   - php app/console doctrine:schema:update --force
   - php app/console doctrine:fixtures:load 
-
+  - Y
 script: phpunit -c app
